@@ -1,0 +1,18 @@
+.header {
+    /* color: 6C63FF; */
+    margin-top: 0%;
+    border: 1px solid rgb(235, 237, 240);
+    background-color: rgb(108, 99, 255);
+    color: white;
+  }
+
+.headingText {
+    padding-left: 4%;
+    font-family: 'Gentium Basic';
+}
+
+.site-page-header {
+    border: 1px solid rgb(235, 237, 240);
+    color: white;
+    background-color: rgb(108, 99, 255);
+  }
