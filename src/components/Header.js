@@ -1,19 +1,12 @@
 import React from 'react';
 import './Header.css';
+import { PageHeader } from '@ant-design/pro-layout';
 
-const Header = () => (
-  <div
-    className="header"
-  >
-    <h2 className="headingText">Jugalbandi</h2>
-  </div>
+const Header = ({ title }) => (
+  <PageHeader
+    className="Header-pageHeader"
+    title={<span className="Header-title">{title}</span>}
+  />
 );
 
 export default Header;
-
-/* <PageHeader
-className="site-page-header"
-onBack={() => null}
-title="Jugalbadi"
-subTitle=""
-/> */
