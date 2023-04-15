@@ -1,8 +1,9 @@
 .Header-pageHeader {
     border: 1px solid rgb(235, 237, 240);
     color: white;
-    background-color: rgb(108, 99, 255);
+    background-color: rgb(108, 99, 255); 
   }
 .Header-title{
   color:white;
+  /* font-size: 100%; */
 } 
