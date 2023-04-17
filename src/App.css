@@ -2,3 +2,58 @@
     margin-top: 2%;
     margin-left: 2.5%;
 }
+
+/* .react-chatbot-kit-user-avatar{
+  width: 10%;
+  height: 4%;
+} */
+
+.react-chatbot-kit-chat-container{
+    background-color: #5f5cf875;
+    width: 375px;
+    height: 451px;
+    margin-left: 2.5%;
+    margin-top: 5%;
+    padding: 5%;
+  }
+  
+  .react-chatbot-kit-chat-bot-message-container{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .react-chatbot-kit-chat-bot-avatar{
+    display: flex;
+    /* margin-right: 0.2%; */
+  }
+  .react-chatbot-kit-chat-bot-message{
+    display: flex;
+    margin-left: 0.5%;
+  }
+  
+  .react-chatbot-kit-user-chat-message-container{
+  display: flex;
+  justify-content: flex-end;
+  gap: 1%;
+  }
+  .react-chatbot-kit-user-chat-message{
+    display: flex;
+    padding: 2%;
+  }
+  
+  .react-chatbot-kit-chat-bot-avatar-letter{
+    margin: 0;
+  }
+
+  .react-chatbot-kit-chat-input-form{
+    width: 400px;
+  }
+
+.react-chatbot-kit-chat-btn-send{
+    width: 30px;
+    height: 35px;
+}
+  .react-chatbot-kit-chat-input{
+    width: 350px;
+    height: 30px;
+  }
+  
