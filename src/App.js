@@ -9,20 +9,20 @@ import UuidInput from './components/UuidInput';
 import config from './components/config';
 import MessageParser from './components/MessageParser';
 import ActionProvider from './components/ActionProvider';
+// import pdf from './components/ActionProvider';
 // import Chatbot from './components/chatbot';
 
 const App = () => {
   const [uuid, setUuid] = useState('');
-  // const [query, setQuery] = useState('');
+  // const [response, setResponse] = useState('');
 
   const onSetUuid = (number) => {
     setUuid(number);
     // eslint-disable-next-line no-console
     console.log(uuid);
   };
-
-  // const onSetQuery = (quetion) => {
-  //   setQuery(quetion);
+  // const onSetResponse = (quetion) => {
+  //   setResponse(quetion);
   //   // eslint-disable-next-line no-console
   //   console.log(query);
   // };
