@@ -10,7 +10,7 @@ const UuidInput = ({ onSetUuid }) => {
   return (
     <div>
       <h5 className="UuidInput-title">Uuid Number</h5>
-      <Input style={{ width: '40%' }} placeholder="Enter Uuid Number" onChange={uuidNoChangeHandler} />
+      <Input placeholder="Enter Uuid Number" onChange={uuidNoChangeHandler} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 .Uuid-div{
-    margin-top: 2%;
+    margin-top: 1%;
     margin-left: 2.5%;
+    margin-right: 2.5%;
 }
 
 /* .react-chatbot-kit-user-avatar{
@@ -11,10 +12,8 @@
 .react-chatbot-kit-chat-container{
     background-color: #5f5cf875;
     border-radius: 3%;
-    /* width: 375px; */
-    width: 30%;
     height: 400px;
-    margin-left: 2.5%;
+    /* margin-left: 2.5%; */
     margin-top: 5%;
     padding: 5%;
     padding-bottom: 0.5%;
@@ -64,7 +63,7 @@
     height: 35px;
 }
   .react-chatbot-kit-chat-input{
-    width: 90%;
+    width: 74%;
     height: 30px;
   }
   
