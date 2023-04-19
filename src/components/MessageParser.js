@@ -12,7 +12,7 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('hello') || message.includes('hi')) {
       actions.handleHello();
     } else {
-      actions.handleQuery('ac17dff6-ddc5-11ed-b956-8d5637583cf2', message);
+      actions.handleQuery(message);
     }
   };
 
