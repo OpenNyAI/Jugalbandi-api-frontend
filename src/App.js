@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './components/Header.css';
 import Chatbot from 'react-chatbot-kit';
 import {
-  Affix, Col, Row,
+  Col, Row,
 } from 'antd';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -31,9 +31,8 @@ const App = () => {
   // };
   return (
     <>
-      <Affix offsetTop={0}>
-        <Header title="Jugalbandi" />
-      </Affix>
+      <Header title="Jugalbandi" />
+
       <Row className="App-grid">
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
           <div className="App-leftGrid">
@@ -46,6 +45,7 @@ const App = () => {
               actionProvider={ActionProvider}
               placeholderText="Type your question"
               headerText={<> </>}
+              disableScrollToBottom={false}
             />
           </div>
         </Col>
