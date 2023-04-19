@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './components/Header.css';
 import Chatbot from 'react-chatbot-kit';
-import { Col, Row } from 'antd';
+import {
+  Affix, Col, Row,
+} from 'antd';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
@@ -9,6 +11,7 @@ import UuidInput from './components/UuidInput';
 import config from './components/config';
 import MessageParser from './components/MessageParser';
 import ActionProvider from './components/ActionProvider';
+import CardPdfList from './components/CardPdfList';
 // import pdf from './components/ActionProvider';
 // import Chatbot from './components/chatbot';
 
@@ -28,10 +31,12 @@ const App = () => {
   // };
   return (
     <>
-      <Header title="Jugalbandi" />
-      <Row style={{ marginLeft: '1.5%', marginRight: '1.5%', marginTop: '1.5%' }}>
-        <Col className="gutter-row" sm={6} md={12} lg={12}>
-          <div className="Uuid-div">
+      <Affix offsetTop={0}>
+        <Header title="Jugalbandi" />
+      </Affix>
+      <Row className="App-grid">
+        <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+          <div className="App-leftGrid">
             {' '}
             <UuidInput onSetUuid={onSetUuid} />
             <Chatbot
@@ -44,11 +49,13 @@ const App = () => {
             />
           </div>
         </Col>
-        <Col className="gutter-row" sm={6} md={12} lg={12}>
-          <div style={{ backgroundColor: '#5f5cf875' }}>pdf here</div>
+        <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+          <div className="App-rightGrid">
+            <CardPdfList />
+          </div>
         </Col>
       </Row>
-      <div>
+      <div className="App-Footer">
         <Footer footerText="Your Company Name123 Your Street Address, Your City, State, Zip, youremail@yourdomain.tld" />
       </div>
 

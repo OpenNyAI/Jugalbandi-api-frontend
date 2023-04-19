@@ -15,7 +15,10 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleQuery = async (uuid_number, query_string) => {
     setState((prev) => ({
       ...prev,
-      messages: [...prev.messages, createChatBotMessage('Searching....')],
+      messages: [...prev.messages, createChatBotMessage("I'll see what I can find", {
+        withAvatar: true,
+        delay: 100,
+      })],
     }));
     const url = 'https://api.jugalbandi.ai/query-with-langchain-gpt4';
     const params = {
@@ -23,7 +26,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       query_string,
     };
     const response = await Api.get(url, params);
-    const botMessage = createChatBotMessage(response.answer);
+    const botMessage = createChatBotMessage(response.answer, {
+      withAvatar: true,
+    });
 
     setState((prev) => ({
       ...prev,

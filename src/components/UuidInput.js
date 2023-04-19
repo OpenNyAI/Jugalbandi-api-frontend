@@ -1,7 +1,7 @@
-import { Input } from 'antd';
+import { Input, Typography } from 'antd';
 import React from 'react';
-import './UuidInput.css';
 
+const { Text } = Typography;
 const UuidInput = ({ onSetUuid }) => {
   const uuidNoChangeHandler = (e) => {
     onSetUuid(e.target.value);
@@ -9,8 +9,8 @@ const UuidInput = ({ onSetUuid }) => {
 
   return (
     <div>
-      <h5 className="UuidInput-title">Uuid Number</h5>
-      <Input placeholder="Enter Uuid Number" onChange={uuidNoChangeHandler} />
+      <Text>Uuid Number</Text>
+      <Input placeholder="Enter Uuid Number" onChange={uuidNoChangeHandler} style={{ backgroundColor: '#E0E0FF' }} />
     </div>
   );
 };

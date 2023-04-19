@@ -5,7 +5,7 @@ const MessageParser = ({ children, actions }) => {
   const createUserMessage = (text) => createChatBotMessage({
     text,
     user: true,
-    avatar: 'https://url-to-new-human-icon.png', // replace with the URL of the new human icon
+    avatar: '',
   });
 
   const parse = (message) => {
