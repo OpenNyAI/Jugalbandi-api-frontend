@@ -1,92 +1,49 @@
 /* eslint-disable camelcase */
+import React from 'react';
 import Api from '../API/Api';
 
-class ActionProvider {
-  constructor(createChatBotMessage, setStateFunc) {
-    this.createChatBotMessage = createChatBotMessage;
-    this.setState = setStateFunc;
-  }
+const ActionProvider = ({ createChatBotMessage, setState, children }) => {
+  const handleHello = () => {
+    const botMessage = createChatBotMessage('Hello. Nice to meet you.');
 
-  handleHello = () => {
-    const botMessage = this.createChatBotMessage('Hello. Nice to meet you.');
-    this.addMessageToState(botMessage);
-  };
-
-  handleQuery = async (uuid_number, query_string) => {
-    this.setState((prev) => ({
+    setState((prev) => ({
       ...prev,
-      messages: [...prev.messages, this.createChatBotMessage("I'll see what I can find", {
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+  const handleQuery = async (query_string) => {
+    const uuid = localStorage.getItem('uuid');
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, createChatBotMessage("I'll see what I can find", {
         withAvatar: true,
         delay: 100,
       })],
     }));
     const url = 'https://api.jugalbandi.ai/query-with-langchain-gpt4';
     const params = {
-      uuid_number,
+      uuid_number: uuid,
       query_string,
     };
     const response = await Api.get(url, params);
-    const botMessage = this.createChatBotMessage(response.answer, {
+    const botMessage = createChatBotMessage(response.answer || response.detail, {
       withAvatar: true,
     });
-
-    this.addMessageToState(botMessage);
-  };
-
-  addMessageToState = (message) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      messages: [...prevState.messages, message],
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
     }));
   };
-}
+  return (
+    <div>
+      {React.Children.map(children, (child) => React.cloneElement(child, {
+        actions: {
+          handleHello,
+          handleQuery,
+        },
+      }))}
+    </div>
+  );
+};
 
 export default ActionProvider;
-
-// const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-//   const handleHello = () => {
-//     const botMessage = createChatBotMessage('Hello. Nice to meet you.');
-
-//     setState((prev) => ({
-//       ...prev,
-//       messages: [...prev.messages, botMessage],
-//     }));
-//   };
-
-//   const handleQuery = async (uuid_number, query_string) => {
-//     setState((prev) => ({
-//       ...prev,
-//       messages: [...prev.messages, createChatBotMessage("I'll see what I can find", {
-//         withAvatar: true,
-//         delay: 100,
-//       })],
-//     }));
-//     const url = 'https://api.jugalbandi.ai/query-with-langchain-gpt4';
-//     const params = {
-//       uuid_number,
-//       query_string,
-//     };
-//     const response = await Api.get(url, params);
-//     const botMessage = createChatBotMessage(response.answer, {
-//       withAvatar: true,
-//     });
-
-//     setState((prev) => ({
-//       ...prev,
-//       messages: [...prev.messages, botMessage],
-//     }));
-//   };
-
-//   return (
-//     <div>
-//       {React.Children.map(children, (child) => React.cloneElement(child, {
-//         actions: {
-//           handleHello,
-//           handleQuery,
-//         },
-//       }))}
-//     </div>
-//   );
-// };
-
-// export default ActionProvider;

@@ -17,12 +17,21 @@ import CardPdfList from './components/CardPdfList';
 
 const App = () => {
   const [uuid, setUuid] = useState('');
+  const [disabled, setDisabled] = useState(true);
   // const [response, setResponse] = useState('');
 
   const onSetUuid = (number) => {
     setUuid(number);
+    setDisabled(false);
+    localStorage.removeItem('uuid');
+    localStorage.setItem('uuid', number);
     // eslint-disable-next-line no-console
-    console.log(uuid);
+    console.log('uuid', number);
+  };
+  const onRefresh = () => {
+    setUuid('');
+    localStorage.removeItem('uuid');
+    setDisabled(true);
   };
   // const onSetResponse = (quetion) => {
   //   setResponse(quetion);
@@ -37,7 +46,12 @@ const App = () => {
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
           <div className="App-leftGrid">
             {' '}
-            <UuidInput onSetUuid={onSetUuid} />
+            <UuidInput
+              uuid={uuid}
+              onSetUuid={onSetUuid}
+              onRefresh={onRefresh}
+              disabled={disabled}
+            />
             <Chatbot
               className="chatbot-container"
               config={config}
