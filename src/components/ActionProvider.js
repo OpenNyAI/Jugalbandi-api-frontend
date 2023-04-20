@@ -1,8 +1,10 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useContext } from 'react';
 import Api from '../API/Api';
+import { CustomContext } from '../CustomContext';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
+  const { updateData, onLoading } = useContext(CustomContext);
   const handleHello = () => {
     const botMessage = createChatBotMessage('Hello. Nice to meet you.');
 
@@ -12,6 +14,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
   const handleQuery = async (query_string) => {
+    onLoading(true);
     const uuid = localStorage.getItem('uuid');
     setState((prev) => ({
       ...prev,
@@ -26,9 +29,21 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       query_string,
     };
     const response = await Api.get(url, params);
-    const botMessage = createChatBotMessage(response.answer || response.detail, {
-      withAvatar: true,
-    });
+    if (response.source_text) {
+      updateData((Object.values(response.source_text))[0]);
+    } else {
+      updateData([]);
+    }
+    let botMessage;
+    if (response.answer) {
+      botMessage = createChatBotMessage(response.answer, {
+        withAvatar: true,
+      });
+    } else {
+      botMessage = createChatBotMessage(response.detail, {
+        withAvatar: true,
+      });
+    }
     setState((prev) => ({
       ...prev,
       messages: [...prev.messages, botMessage],

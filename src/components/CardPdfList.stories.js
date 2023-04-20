@@ -6,4 +6,4 @@ export default {
   component: CardPdfList,
 };
 
-export const Primary = () => <CardPdfList />;
+export const Primary = () => <CardPdfList cardPdfList={['kjjkkfnkdnkqwnke', 'jbjkwakdksajkn']} />;
