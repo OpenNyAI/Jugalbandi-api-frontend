@@ -8,5 +8,10 @@ const get = async (url, queryParams) => {
   const response = await fetch(`${url}?${query}`);
   return response.json();
 };
+const readPdf = async (link) => {
+  const response = await fetch(link);
+  const textResponse = response.text();
+  return textResponse;
+};
 
-export default { get };
+export default { get, readPdf };

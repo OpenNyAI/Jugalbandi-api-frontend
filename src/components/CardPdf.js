@@ -2,7 +2,7 @@ import { Button, Card } from 'antd';
 import React, { useState } from 'react';
 import PdfModal from './PdfModal';
 
-const CardPdf = ({ content }) => {
+const CardPdf = ({ content, pdfContent }) => {
   const [IsPdfModalOpen, setIsPdfModalOpen] = useState(false);
   const showModal = () => {
     setIsPdfModalOpen(true);
@@ -30,7 +30,11 @@ const CardPdf = ({ content }) => {
           Read More
         </Button>
       </Card>
-      <PdfModal IsPdfModalOpen={IsPdfModalOpen} handleCancel={handleCancel} />
+      <PdfModal
+        IsPdfModalOpen={IsPdfModalOpen}
+        handleCancel={handleCancel}
+        pdfContent={pdfContent}
+      />
     </>
   );
 };

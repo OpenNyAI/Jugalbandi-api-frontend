@@ -1,11 +1,9 @@
 import { Modal } from 'antd';
 import React from 'react';
 
-const PdfModal = ({ IsPdfModalOpen, handleCancel }) => (
+const PdfModal = ({ IsPdfModalOpen, handleCancel, pdfContent }) => (
   <Modal title="Basic Modal" open={IsPdfModalOpen} onCancel={handleCancel} footer={null}>
-    <p>Some contents...</p>
-    <p>Some contents...</p>
-    <p>Some contents...</p>
+    <p>{pdfContent}</p>
   </Modal>
 );
 

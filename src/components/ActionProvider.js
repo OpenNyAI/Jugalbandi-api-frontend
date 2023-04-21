@@ -4,7 +4,7 @@ import Api from '../API/Api';
 import { CustomContext } from '../CustomContext';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-  const { updateData, onLoading } = useContext(CustomContext);
+  const { updateData, onLoading, updateDocLink } = useContext(CustomContext);
   const handleHello = () => {
     const botMessage = createChatBotMessage('Hello. Nice to meet you.');
 
@@ -31,8 +31,10 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     const response = await Api.get(url, params);
     if (response.source_text) {
       updateData((Object.values(response.source_text))[0]);
+      updateDocLink((Object.keys(response.source_text)[0]));
     } else {
       updateData([]);
+      updateDocLink('');
     }
     let botMessage;
     if (response.answer) {

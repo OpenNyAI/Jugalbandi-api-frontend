@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './components/Header.css';
 import Chatbot from 'react-chatbot-kit';
 import {
@@ -14,12 +14,13 @@ import ActionProvider from './components/ActionProvider';
 import { CustomContext } from './CustomContext';
 import CardPdfList from './components/CardPdfList';
 import Loader from './components/Loader';
+import Api from './API/Api';
 
 const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const { data, loading } = useContext(CustomContext);
-
+  const { data, loading, docLink } = useContext(CustomContext);
+  const [extractedText, setExtractedText] = useState('');
   const onSetUuid = (number) => {
     setUuid(number);
     setDisabled(false);
@@ -31,6 +32,12 @@ const Jugalbandi = () => {
     localStorage.removeItem('uuid');
     setDisabled(true);
   };
+  useEffect(() => {
+    if (docLink !== '') {
+      Api.readPdf(docLink)
+        .then((response) => setExtractedText(response));
+    }
+  }, [docLink]);
   return (
     <>
       <Header title="Jugalbandi" />
@@ -60,7 +67,7 @@ const Jugalbandi = () => {
           <div className="App-rightGrid">
             {loading ? (
               <Loader />
-            ) : <CardPdfList cardPdfList={data} />}
+            ) : <CardPdfList cardPdfList={data} pdfContent={extractedText} />}
 
           </div>
         </Col>
