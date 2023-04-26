@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
 import './components/Header.css';
 import Chatbot from 'react-chatbot-kit';
@@ -12,7 +14,7 @@ import config from './components/config';
 import MessageParser from './components/MessageParser';
 import ActionProvider from './components/ActionProvider';
 import { CustomContext } from './CustomContext';
-import CardPdfList from './components/CardPdfList';
+// import CardPdfList from './components/CardPdfList';
 import Loader from './components/Loader';
 import Api from './API/Api';
 
@@ -35,7 +37,10 @@ const Jugalbandi = () => {
   useEffect(() => {
     if (docLink !== '') {
       Api.readPdf(docLink)
-        .then((response) => setExtractedText(response));
+        .then((response) => {
+          setExtractedText(response);
+          console.log(response);
+        });
     }
   }, [docLink]);
   return (
@@ -67,8 +72,11 @@ const Jugalbandi = () => {
           <div className="App-rightGrid">
             {loading ? (
               <Loader />
-            ) : <CardPdfList cardPdfList={data} pdfContent={extractedText} />}
-
+            )
+              : null}
+            {' '}
+            {/* <CardPdfList cardPdfList={data} pdfContent={extractedText} /> */}
+            {/* } */}
           </div>
         </Col>
       </Row>
