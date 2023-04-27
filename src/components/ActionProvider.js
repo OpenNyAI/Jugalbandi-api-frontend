@@ -5,6 +5,17 @@ import { CustomContext } from '../CustomContext';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const { updateData, onLoading } = useContext(CustomContext);
+  const handleFeedback = () => {
+    const botMessage = createChatBotMessage(
+      'Thank you, your response has beemn recorded',
+    );
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
   const handleHello = () => {
     const botMessage = createChatBotMessage('Hello. Nice to meet you.');
 
@@ -38,6 +49,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     if (response.answer) {
       botMessage = createChatBotMessage(response.answer, {
         withAvatar: true,
+        // widget: 'FeedbackButtons',
       });
     } else {
       botMessage = createChatBotMessage(response.detail, {
@@ -55,6 +67,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         actions: {
           handleHello,
           handleQuery,
+          handleFeedback,
         },
       }))}
     </div>
