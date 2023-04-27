@@ -5,7 +5,7 @@ const ContentFormtting = ({ contentList, highlightedPortions }) => {
   const highlightedArray = [];
   highlightedPortions.forEach((highlightedPortion) => {
     const highlights = highlightedPortion.split('   ');
-    highlights.forEach((highlight) => highlightedArray.push(highlight.replaceAll(' ', ' ')));
+    highlights.forEach((highlight) => highlightedArray.push(highlight));
   });
   highlightedArray.sort();
   const segments = contentList?.split('   ');
