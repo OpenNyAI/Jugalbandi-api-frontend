@@ -4,7 +4,7 @@ import Api from '../API/Api';
 import { CustomContext } from '../CustomContext';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-  const { updateData, onLoading, updateDocLink } = useContext(CustomContext);
+  const { updateData, onLoading } = useContext(CustomContext);
   const handleHello = () => {
     const botMessage = createChatBotMessage('Hello. Nice to meet you.');
 
@@ -23,18 +23,16 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         delay: 100,
       })],
     }));
-    const url = 'https://api.jugalbandi.ai/query-with-langchain-gpt4';
+    const url = 'https://api.jugalbandi.ai/query-with-langchain-gpt3-5';
     const params = {
       uuid_number: uuid,
       query_string,
     };
     const response = await Api.get(url, params);
     if (response.source_text) {
-      updateData((Object.values(response.source_text))[0]);
-      updateDocLink((Object.keys(response.source_text)[0]));
+      updateData(response.source_text);
     } else {
       updateData([]);
-      updateDocLink('');
     }
     let botMessage;
     if (response.answer) {

@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useContext, useEffect, useState,
+} from 'react';
 import './components/Header.css';
 import Chatbot from 'react-chatbot-kit';
 import {
@@ -14,15 +14,15 @@ import config from './components/config';
 import MessageParser from './components/MessageParser';
 import ActionProvider from './components/ActionProvider';
 import { CustomContext } from './CustomContext';
-// import CardPdfList from './components/CardPdfList';
+import CardPdfList from './components/CardPdfList';
 import Loader from './components/Loader';
 import Api from './API/Api';
 
 const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const { data, loading, docLink } = useContext(CustomContext);
-  const [extractedText, setExtractedText] = useState('');
+  const { data, loading, onLoading } = useContext(CustomContext);
+  const [extractedText, setExtractedText] = useState({});
   const onSetUuid = (number) => {
     setUuid(number);
     setDisabled(false);
@@ -35,14 +35,20 @@ const Jugalbandi = () => {
     setDisabled(true);
   };
   useEffect(() => {
-    if (docLink !== '') {
-      Api.readPdf(docLink)
-        .then((response) => {
-          setExtractedText(response);
-          console.log(response);
+    const txtContent = {};
+    if (data !== []) {
+      Promise.all(data.map((dataSource) => Api.readPdf(dataSource.source_text_link)
+        .then((response) => ({ dataSource, extractedTextResponse: response }))))
+        .then((results) => {
+          results.forEach((result) => {
+            const { dataSource, extractedTextResponse } = result;
+            txtContent[dataSource.source_text_name] = extractedTextResponse;
+          });
+          setExtractedText(txtContent);
+          onLoading(false);
         });
     }
-  }, [docLink]);
+  }, [data]);
   return (
     <>
       <Header title="Jugalbandi" />
@@ -73,10 +79,7 @@ const Jugalbandi = () => {
             {loading ? (
               <Loader />
             )
-              : null}
-            {' '}
-            {/* <CardPdfList cardPdfList={data} pdfContent={extractedText} /> */}
-            {/* } */}
+              : <CardPdfList cardPdfList={data} pdfContent={extractedText} />}
           </div>
         </Col>
       </Row>

@@ -9,7 +9,6 @@ export const CustomContextProvider = ({ children }) => {
 
   const updateData = (newData) => {
     setData(newData);
-    setLoading(false);
   };
   const updateDocLink = (link) => {
     setDocLink(link);

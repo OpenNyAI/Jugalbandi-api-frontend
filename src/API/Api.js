@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const get = async (url, queryParams) => {
   const query = Object.keys(queryParams)
     .map(
