@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Tabs } from 'antd';
 
@@ -7,9 +8,7 @@ const ContentFormtting = ({ contentList, highlightedPortions }) => {
     const highlights = highlightedPortion.split('   ');
     highlights.forEach((highlight) => highlightedArray.push(highlight));
   });
-  highlightedArray.sort();
   const segments = contentList?.split('   ');
-
   const highlightedSegments = segments.map((segment) => {
     const highlighted = highlightedArray.find((highlight) => segment.includes(highlight));
     const positions = [];
@@ -26,7 +25,13 @@ const ContentFormtting = ({ contentList, highlightedPortions }) => {
     return highlighted ? (
       <div>
         <span>{segment.substring(0, positions[0].start)}</span>
-        {positions.map((pos) => <span style={{ backgroundColor: 'yellow' }}>{segment.substring(pos.start, pos.end)}</span>)}
+        {positions.map((pos, index) => (
+          <>
+            <span style={{ backgroundColor: 'yellow' }}>{segment.substring(pos.start, pos.end)}</span>
+            {positions[index + 1] && pos.end - positions[index + 1].start !== 1
+              ? <span>{segment.substring(pos.end, positions[index + 1].start)}</span> : null}
+          </>
+        ))}
 
         <span>{segment.substring(positions[positions.length - 1].end, segment.length - 1)}</span>
       </div>
