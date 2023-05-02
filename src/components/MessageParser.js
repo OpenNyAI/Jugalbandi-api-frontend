@@ -9,7 +9,7 @@ const MessageParser = ({ children, actions }) => {
   });
 
   const parse = (message) => {
-    if (message.includes('hello') || message.includes('hi')) {
+    if (message.includes('hello ') || message.includes('hi ')) {
       actions.handleHello();
     } else {
       actions.handleQuery(message);
