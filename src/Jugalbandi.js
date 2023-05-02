@@ -9,7 +9,6 @@ import {
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
-import UuidInput from './components/UuidInput';
 import config from './components/config';
 import MessageParser from './components/MessageParser';
 import ActionProvider from './components/ActionProvider';
@@ -17,22 +16,24 @@ import { CustomContext } from './CustomContext';
 import CardPdfList from './components/CardPdfList';
 import Loader from './components/Loader';
 import Api from './API/Api';
+import UuidSelect from './components/UuidSelect';
+import uuidDatabase from './UuidDatabase';
 
 const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
   const { data, loading, onLoading } = useContext(CustomContext);
   const [extractedText, setExtractedText] = useState({});
   const onSetUuid = (number) => {
     setUuid(number);
-    setDisabled(false);
+    // setDisabled(false);
     localStorage.removeItem('uuid');
     localStorage.setItem('uuid', number);
   };
   const onRefresh = () => {
     setUuid('');
     localStorage.removeItem('uuid');
-    setDisabled(true);
+    // setDisabled(true);
   };
   useEffect(() => {
     const txtContent = {};
@@ -57,11 +58,17 @@ const Jugalbandi = () => {
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
           <div className="App-leftGrid">
             {' '}
-            <UuidInput
+            {/* <UuidInput
               uuid={uuid}
               onSetUuid={onSetUuid}
               onRefresh={onRefresh}
               disabled={disabled}
+            /> */}
+            <UuidSelect
+              uuid={uuid}
+              onSetUuid={onSetUuid}
+              uuidOptions={uuidDatabase}
+              onRefresh={onRefresh}
             />
             <Chatbot
               className="chatbot-container"
