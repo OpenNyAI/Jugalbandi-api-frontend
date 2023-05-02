@@ -4,7 +4,10 @@ import { Tabs } from 'antd';
 
 const ContentFormtting = ({ contentList, highlightedPortions }) => {
   const highlightedArray = [];
-  highlightedPortions.forEach((highlightedPortion) => {
+  const sortedArr = highlightedPortions.sort(
+    (a, b) => contentList.indexOf(a) - contentList.indexOf(b),
+  );
+  sortedArr.forEach((highlightedPortion) => {
     const highlights = highlightedPortion.split('   ');
     highlights.forEach((highlight) => highlightedArray.push(highlight));
   });
@@ -18,6 +21,7 @@ const ContentFormtting = ({ contentList, highlightedPortions }) => {
         const obj = {
           start: startingIndex,
           end: startingIndex + highlight.length,
+          highlight,
         };
         positions.push(obj);
       }
