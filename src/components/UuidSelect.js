@@ -9,7 +9,9 @@ const UuidSelect = ({
   uuid, onSetUuid, uuidOptions, onRefresh,
 }) => {
   const uuidNoChangeHandler = (value) => {
-    onSetUuid(value);
+    if (onSetUuid) {
+      onSetUuid(value);
+    }
   };
 
   return (
