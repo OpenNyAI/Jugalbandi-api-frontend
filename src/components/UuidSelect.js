@@ -5,19 +5,20 @@ import {
 import React from 'react';
 
 const { Text } = Typography;
-const UuidSelect = ({
-  uuid, onSetUuid, uuidOptions, onRefresh,
+const SelectBox = ({
+  valueSelected, onUpdateValue, options, onRefresh,
+  label, placeholder, isSearchEnabled, hasClearButton,
 }) => {
-  const uuidNoChangeHandler = (value) => {
-    if (onSetUuid) {
-      onSetUuid(value);
+  const valueChangeHandler = (value) => {
+    if (onUpdateValue) {
+      onUpdateValue(value);
     }
   };
 
   return (
     <div>
-      <Text>Uuid Number</Text>
-      <Space style={{ width: '100%' }} direction="vertical">
+      <Text>{label}</Text>
+      <Space.Compact style={{ width: '100%' }} direction="vertical">
         <ConfigProvider
           theme={{
             token: {
@@ -27,22 +28,21 @@ const UuidSelect = ({
           }}
         >
           <Select
-            size="large"
-            showSearch
-            allowClear
-            placeholder="Enter The Name of The Document You Want to Query"
+            showSearch={isSearchEnabled}
+            allowClear={hasClearButton}
+            placeholder={placeholder}
             optionFilterProp="children"
-            onChange={uuidNoChangeHandler}
+            onChange={valueChangeHandler}
             style={{ width: '100%' }}
-            value={uuid}
-            onClear={onRefresh}
+            valueSelected={valueSelected}
+            onClear={onRefresh && onRefresh}
             filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
-            options={uuidOptions}
+            options={options}
           />
         </ConfigProvider>
-      </Space>
+      </Space.Compact>
     </div>
   );
 };
 
-export default UuidSelect;
+export default SelectBox;

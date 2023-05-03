@@ -16,24 +16,40 @@ import { CustomContext } from './CustomContext';
 import CardPdfList from './components/CardPdfList';
 import Loader from './components/Loader';
 import Api from './API/Api';
-import UuidSelect from './components/UuidSelect';
 import uuidDatabase from './UuidDatabase';
+import UuidInput from './components/UuidInput';
+import SelectBox from './components/UuidSelect';
 
 const Jugalbandi = () => {
+  const [uuidOptionSelected, setUuidOptionSelected] = useState('');
   const [uuid, setUuid] = useState('');
-  // const [disabled, setDisabled] = useState(true);
+  const uuidOptions = [
+    {
+      value: 'input',
+      label: 'Input New UUID Number',
+    },
+    {
+      value: 'select',
+      label: 'Select Existing UUID Number',
+    },
+  ];
+  const [disabled, setDisabled] = useState(true);
   const { data, loading, onLoading } = useContext(CustomContext);
   const [extractedText, setExtractedText] = useState({});
   const onSetUuid = (number) => {
     setUuid(number);
-    // setDisabled(false);
+    setDisabled(false);
     localStorage.removeItem('uuid');
     localStorage.setItem('uuid', number);
   };
   const onRefresh = () => {
     setUuid('');
     localStorage.removeItem('uuid');
-    // setDisabled(true);
+    setDisabled(true);
+  };
+  const onSetUuidOptionSelected = (uuidOption) => {
+    setUuidOptionSelected(uuidOption);
+    onRefresh();
   };
   useEffect(() => {
     const txtContent = {};
@@ -58,18 +74,38 @@ const Jugalbandi = () => {
         <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
           <div className="App-leftGrid">
             {' '}
-            {/* <UuidInput
-              uuid={uuid}
-              onSetUuid={onSetUuid}
-              onRefresh={onRefresh}
-              disabled={disabled}
-            /> */}
-            <UuidSelect
-              uuid={uuid}
-              onSetUuid={onSetUuid}
-              uuidOptions={uuidDatabase}
-              onRefresh={onRefresh}
+            <SelectBox
+              label=""
+              placeholder="Select the method you want to give UUID number"
+              valueSelected={uuidOptionSelected}
+              onUpdateValue={onSetUuidOptionSelected}
+              options={uuidOptions}
+              isSearchEnabled={false}
+              hasClearButton={false}
             />
+            {uuidOptionSelected === '' ? null : (
+              <div style={{ marginTop: '2%' }}>
+                {uuidOptionSelected === 'input' ? (
+                  <UuidInput
+                    uuid={uuid}
+                    onSetUuid={onSetUuid}
+                    onRefresh={onRefresh}
+                    disabled={disabled}
+                  />
+                ) : (
+                  <SelectBox
+                    label="Uuid Number"
+                    placeholder="Enter The Name of The Document You Want to Query"
+                    valueSelected={uuid}
+                    onUpdateValue={onSetUuid}
+                    options={uuidDatabase}
+                    onRefresh={onRefresh}
+                    isSearchEnabled
+                    hasClearButton
+                  />
+                )}
+              </div>
+            )}
             <Chatbot
               className="chatbot-container"
               config={config}
@@ -91,7 +127,7 @@ const Jugalbandi = () => {
         </Col>
       </Row>
       <div className="App-Footer">
-        <Footer footerText="Your Company Name123 Your Street Address, Your City, State, Zip, youremail@yourdomain.tld" />
+        <Footer footerText="Agami India, Ahuja Palace, Richmond Rd, Langford Gardens, Bengaluru, Karnataka 560025, team@agami.in" />
       </div>
 
     </>

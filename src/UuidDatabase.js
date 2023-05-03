@@ -7,5 +7,17 @@ const uuidDatabase = [
     value: '0363ebea-dea9-11ed-bd01-49ae0a0ff755',
     label: 'The Karnataka Devadasis (Prohibition Of Dedication) Act, 1982 (0363ebea-dea9-11ed-bd01-49ae0a0ff755)',
   },
+  {
+    value: '96645488-e986-11ed-9e0d-ddfb783831f1',
+    label: 'The Karnataka Education Act, 1983 (96645488-e986-11ed-9e0d-ddfb783831f1)',
+  },
+  {
+    value: 'ebc81144-e986-11ed-9e0d-ddfb783831f1',
+    label: 'The Chit Funds (Karnataka Amendment) Act, 2007 (ebc81144-e986-11ed-9e0d-ddfb783831f1)',
+  },
+  {
+    value: '2d9d5dc2-e987-11ed-9e0d-ddfb783831f1',
+    label: 'The Karnataka General Clauses Act, 1899 (2d9d5dc2-e987-11ed-9e0d-ddfb783831f1)',
+  },
 ];
 export default uuidDatabase;

@@ -1,6 +1,8 @@
 import React from 'react';
 import CardPdfList from './CardPdfList';
-import { ResultOne, ResultThree, ResultTwo } from '../sample-result';
+import {
+  ResultFour, ResultOne, ResultThree, ResultTwo,
+} from '../sample-result';
 
 export default {
   title: 'CardPdfList',
@@ -22,6 +24,12 @@ export const Secondary = () => (
 export const Tertiary = () => (
   <CardPdfList
     cardPdfList={ResultThree.source_text}
+    pdfContent={pdfContent}
+  />
+);
+export const ChunkOverLap = () => (
+  <CardPdfList
+    cardPdfList={ResultFour.source_text}
     pdfContent={pdfContent}
   />
 );
