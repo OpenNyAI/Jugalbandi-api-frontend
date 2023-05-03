@@ -49,7 +49,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     if (response.answer) {
       botMessage = createChatBotMessage(response.answer, {
         withAvatar: true,
-        // widget: 'FeedbackButtons',
+        widget: 'FeedbackButtons',
       });
     } else {
       botMessage = createChatBotMessage(response.detail, {
