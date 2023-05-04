@@ -38,8 +38,13 @@ const ContentFormtting = ({ contentList, highlightedPortions }) => {
               ? <span>{segment.substring(pos.end, positions[index + 1].start)}</span> : null}
           </>
         ))}
+        {segment.length - 1 - positions[positions.length - 1].end > 1
+        && (
+        <span>
+          {segment.substring(positions[positions.length - 1].end, segment.length - 1)}
+        </span>
+        )}
 
-        <span>{segment.substring(positions[positions.length - 1].end, segment.length - 1)}</span>
       </div>
     ) : (
       <div>{segment}</div>
