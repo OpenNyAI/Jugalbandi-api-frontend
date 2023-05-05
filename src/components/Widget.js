@@ -29,7 +29,7 @@ const FeedbackButtons = () => {
     }
   };
   return (
-    <div style={{ marginLeft: '10px' }}>
+    <div style={{ marginLeft: '20px' }}>
       {isLiked ? <Button type="text" shape="circle" icon={<LikeFilled style={{ color: '#5E5BFF' }} />} onClick={onLiked} disabled={!isDisliked} />
         : <Button type="text" shape="circle" icon={<LikeFilled style={{ color: '#9D9CD4' }} />} onClick={onLiked} disabled={!isDisliked} />}
       {!isDisliked ? <Button type="text" shape="circle" icon={<DislikeFilled style={{ color: '#5E5BFF' }} />} onClick={onDisLiked} disabled={isLiked} />
