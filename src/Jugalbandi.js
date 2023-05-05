@@ -5,6 +5,7 @@ import './components/Header.css';
 import Chatbot from 'react-chatbot-kit';
 import {
   Col, Row,
+  Layout,
 } from 'antd';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -20,6 +21,7 @@ import uuidDatabase from './UuidDatabase';
 import UuidInput from './components/UuidInput';
 import SelectBox from './components/UuidSelect';
 
+const { Content } = Layout;
 const Jugalbandi = () => {
   const [uuidOptionSelected, setUuidOptionSelected] = useState('');
   const [uuid, setUuid] = useState('');
@@ -67,70 +69,72 @@ const Jugalbandi = () => {
     }
   }, [data]);
   return (
-    <>
-      <Header title="Jugalbandi" />
+    <Layout>
+      <Content style={{ paddingBottom: '100px', backgroundColor: 'white' }}>
+        <Header title="Jugalbandi" />
 
-      <Row className="App-grid">
-        <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
-          <div className="App-leftGrid">
-            {' '}
-            <SelectBox
-              label=""
-              placeholder="Select the method you want to give UUID number"
-              valueSelected={uuidOptionSelected}
-              onUpdateValue={onSetUuidOptionSelected}
-              options={uuidOptions}
-              isSearchEnabled={false}
-              hasClearButton={false}
-            />
-            {uuidOptionSelected === '' ? null : (
-              <div style={{ marginTop: '2%' }}>
-                {uuidOptionSelected === 'input' ? (
-                  <UuidInput
-                    uuid={uuid}
-                    onSetUuid={onSetUuid}
-                    onRefresh={onRefresh}
-                    disabled={disabled}
-                  />
-                ) : (
-                  <SelectBox
-                    label="Uuid Number"
-                    placeholder="Enter The Name of The Document You Want to Query"
-                    valueSelected={uuid}
-                    onUpdateValue={onSetUuid}
-                    options={uuidDatabase}
-                    onRefresh={onRefresh}
-                    isSearchEnabled
-                    hasClearButton
-                  />
-                )}
-              </div>
-            )}
-            <Chatbot
-              className="chatbot-container"
-              config={config}
-              messageParser={MessageParser}
-              actionProvider={ActionProvider}
-              placeholderText="Type your question"
-              headerText={<> </>}
-              disableScrollToBottom={false}
-            />
-          </div>
-        </Col>
-        <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
-          <div className="App-rightGrid">
-            {loading ? (
-              <Loader />
-            )
-              : <CardPdfList cardPdfList={data} pdfContent={extractedText} />}
-          </div>
-        </Col>
-      </Row>
-      <div className="App-Footer">
-        <Footer footerText="Agami India, Ahuja Palace, Richmond Rd, Langford Gardens, Bengaluru, Karnataka 560025, team@agami.in" />
-      </div>
+        <Row className="App-grid">
+          <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+            <div className="App-leftGrid">
+              {' '}
+              <SelectBox
+                label=""
+                placeholder="Select the method you want to give UUID number"
+                valueSelected={uuidOptionSelected}
+                onUpdateValue={onSetUuidOptionSelected}
+                options={uuidOptions}
+                isSearchEnabled={false}
+                hasClearButton={false}
+              />
+              {uuidOptionSelected === '' ? null : (
+                <div style={{ marginTop: '2%' }}>
+                  {uuidOptionSelected === 'input' ? (
+                    <UuidInput
+                      uuid={uuid}
+                      onSetUuid={onSetUuid}
+                      onRefresh={onRefresh}
+                      disabled={disabled}
+                    />
+                  ) : (
+                    <SelectBox
+                      label="Uuid Number"
+                      placeholder="Enter The Name of The Document You Want to Query"
+                      valueSelected={uuid}
+                      onUpdateValue={onSetUuid}
+                      options={uuidDatabase}
+                      onRefresh={onRefresh}
+                      isSearchEnabled
+                      hasClearButton
+                    />
+                  )}
+                </div>
+              )}
+              <Chatbot
+                className="chatbot-container"
+                config={config}
+                messageParser={MessageParser}
+                actionProvider={ActionProvider}
+                placeholderText="Type your question"
+                headerText={<> </>}
+                disableScrollToBottom={false}
+              />
+            </div>
+          </Col>
+          <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+            <div className="App-rightGrid">
+              {loading ? (
+                <Loader />
+              )
+                : <CardPdfList cardPdfList={data} pdfContent={extractedText} />}
+            </div>
+          </Col>
+        </Row>
+      </Content>
+      <Footer footerText="Agami India, Ahuja Palace, Richmond Rd,
+        Langford Gardens, Bengaluru, Karnataka 560025, team@agami.in"
+      />
 
-    </>
+    </Layout>
   );
 };
 

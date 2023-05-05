@@ -5,11 +5,9 @@ import './Footer.css';
 const { Footer } = Layout;
 
 const CustomFooter = ({ footerText }) => (
-  <div className="Footer-element">
-    <Footer className="Footer-footerText">
-      {footerText}
-    </Footer>
-  </div>
+  <Footer className="Footer-element">
+    {footerText}
+  </Footer>
 );
 
 export default CustomFooter;

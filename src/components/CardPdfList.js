@@ -65,7 +65,7 @@ const CardPdfList = ({ cardPdfList, pdfContent }) => (
     {cardPdfList.length > 0 && (
       <Tabs
         style={{
-          backgroundColor: 'white', borderRadius: '10px', padding: '2%',
+          backgroundColor: 'white', borderRadius: '10px', padding: '3%',
         }}
         type="card"
         items={cardPdfList.map((_, i) => {
