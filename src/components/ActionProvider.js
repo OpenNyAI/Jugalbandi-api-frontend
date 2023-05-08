@@ -4,7 +4,7 @@ import Api from '../API/Api';
 import { CustomContext } from '../CustomContext';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-  const { updateData, onLoading } = useContext(CustomContext);
+  const { updateData, onLoading, updateQueryAnswer } = useContext(CustomContext);
   const handleFeedback = () => {
     const botMessage = createChatBotMessage(
       'Thank you, your response has beemn recorded',
@@ -47,11 +47,16 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }
     let botMessage;
     if (response.answer) {
+      updateQueryAnswer({
+        query: response.query,
+        response: response.answer,
+      });
       botMessage = createChatBotMessage(response.answer, {
         withAvatar: true,
         widget: 'FeedbackButtons',
       });
     } else {
+      updateQueryAnswer({});
       botMessage = createChatBotMessage(response.detail, {
         withAvatar: true,
       });
