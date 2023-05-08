@@ -59,7 +59,7 @@ const ContentFormtting = ({ contentList, highlightedPortions }) => {
 };
 const CardPdfList = ({ cardPdfList, pdfContent }) => (
   <div style={{
-    minHeight: '700px', maxHeight: '700px', overflowY: 'scroll', backgroundColor: 'rgba(209, 209, 251, 0.42)', padding: '5% 5% 2% 5%', borderRadius: '2%',
+    minHeight: '700px', maxHeight: '700px', overflowY: 'scroll', backgroundColor: '#ecc0ed', padding: '5% 5% 2% 5%', borderRadius: '2%',
   }}
   >
     {cardPdfList.length > 0 && (

@@ -15,10 +15,10 @@ const UuidInput = ({
     <div>
       <Text>Uuid Number</Text>
       <Space.Compact style={{ width: '100%' }}>
-        <Input placeholder="Enter Uuid Number" onChange={uuidNoChangeHandler} style={{ backgroundColor: '#E0E0FF' }} value={uuid} />
+        <Input placeholder="Enter Uuid Number" onChange={uuidNoChangeHandler} style={{ backgroundColor: 'white', border: '1px solid black' }} value={uuid} />
         <Button
           style={{
-            backgroundColor: '#5E5BFF', color: 'white',
+            backgroundColor: '#da6eaa', color: 'white',
           }}
           onClick={onRefresh}
           disabled={disabled}

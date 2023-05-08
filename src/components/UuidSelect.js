@@ -22,8 +22,10 @@ const SelectBox = ({
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: '#E0E0FF',
-              colorBgContainer: '#E0E0FF',
+              colorBorder: 'black',
+              colorPrimaryBorderHover: 'black',
+              colorPrimaryBorder: 'black',
+              colorInfoBorder: 'black',
             },
           }}
         >
