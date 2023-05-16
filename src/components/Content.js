@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-debugger */
 import React from 'react';
 
 const Content = ({ contentList, highlightedPortions }) => {
@@ -10,34 +8,23 @@ const Content = ({ contentList, highlightedPortions }) => {
   const startingRange = contentList.indexOf(sortedArr[0]);
   const endingRange = contentList.indexOf(sortedArr[sortedArr.length - 1])
   + sortedArr[sortedArr.length - 1].length;
-  // console.log('segments', contentList.substring(startingRange, endingRange));
   sortedArr.forEach((highlightedPortion) => {
     const highlights = highlightedPortion.replaceAll('\\n \\n', '\n \n').split('\n \n').filter((str) => str !== ' ' && str !== '  ');
     highlights.forEach((highlight) => highlightedArray.push(highlight.trim().replaceAll('\\n', '')));
   });
   const highlightsArray = highlightedArray.filter((trimmedSegment) => trimmedSegment !== '');
-  console.log('highlights 1', highlightsArray);
   const segments = contentList?.replaceAll('\\n \\n', '\n \n').split('\n \n').filter((str) => str !== ' ' && str !== '  ');
-  // console.log('highlight 2', contentList.replaceAll('\\n \\n', '\n \n').
-  // split('\n \n').filter((str) => str !== ' ' && str !== '  '));
   const trimmedSegments = [];
   segments.forEach((segment) => {
     trimmedSegments.push(segment.trim().replaceAll('\\n', ''));
   });
-  // console.log('highlights 5', startingRange, endingRange);
-  // console.log(segments);
   const trimmedArray = trimmedSegments.filter((trimmedSegment) => trimmedSegment !== '');
-  // console.log('highlight 3', trimmedArray);
   const highlightedSegments = trimmedArray.map((segment) => {
-    // const highlighted = highlightedArray.find((highlight) => segment.includes(highlight));
     let highlighted;
     let intermediate = true;
     let startingHighlightRange = false;
     const positions = [];
-    // console.log('index 1', segment);
     highlightsArray.forEach((highlight) => {
-      // console.log('index 2', highlight);
-      // console.log('index 3', contentList.indexOf(segment), ' ', segment.includes(highlight));
       if ((contentList.indexOf(segment) + segment.indexOf(highlight) >= startingRange
       && contentList.indexOf(segment) + segment.indexOf(highlight) <= endingRange)) {
         if (segment.includes(highlight)) {
@@ -84,9 +71,6 @@ const Content = ({ contentList, highlightedPortions }) => {
         break;
       }
     }
-    // if (positions.length > 0) {
-    //   console.log('highlights 45', positions);
-    // }
     return highlighted ? (
       <div style={{ marginBottom: '10px' }}>
         {!startingHighlightRange ? <span>{segment.substring(0, positions[0].start)}</span> : <span style={{ backgroundColor: 'yellow' }}>{segment.substring(0, positions[0].start)}</span>}

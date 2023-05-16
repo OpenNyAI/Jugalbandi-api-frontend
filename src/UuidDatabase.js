@@ -7,18 +7,13 @@ const uuidDatabase = [
     value: '0363ebea-dea9-11ed-bd01-49ae0a0ff755',
     label: 'The Karnataka Devadasis (Prohibition Of Dedication) Act, 1982 (0363ebea-dea9-11ed-bd01-49ae0a0ff755)',
   },
-  // {
-  //   value: '96645488-e986-11ed-9e0d-ddfb783831f1',
-  //   label: 'The Karnataka Education Act, 1983 (96645488-e986-11ed-9e0d-ddfb783831f1)',
-  // },
-  // {
-  //   value: 'ebc81144-e986-11ed-9e0d-ddfb783831f1',
-  //   label: 'The Chit Funds (Karnataka Amendment) Act, 2007 (ebc8114
-  // 4-e986-11ed-9e0d-ddfb783831f1)',
-  // },
-  // {
-  //   value: '2d9d5dc2-e987-11ed-9e0d-ddfb783831f1',
-  //   label: 'The Karnataka General Clauses Act, 1899 (2d9d5dc2-e987-11ed-9e0d-ddfb783831f1)',
-  // },
+  {
+    value: '85796870-f3bd-11ed-866b-3e85235234ac',
+    label: 'The Karnataka State Ayush University Act, 2021 (85796870-f3bd-11ed-866b-3e85235234ac)',
+  },
+  {
+    value: '2ea8058c-f3be-11ed-866b-3e85235234ac',
+    label: 'The Karnataka Agricultural Pests And Diseases Act, 1968 (2ea8058c-f3be-11ed-866b-3e85235234ac)',
+  },
 ];
 export default uuidDatabase;
