@@ -3,19 +3,9 @@ import {
 } from '@ant-design/icons';
 import { Button } from 'antd';
 import React, { useContext, useState } from 'react';
-import Api from '../API/Api';
-import { CustomContext } from '../CustomContext';
+import { CustomContext } from '../utlities/CustomContext';
+import Chatbot from '../utlities/Chatbot';
 
-const sendFeedbackResponse = async (feedback, queryAnswer, onUpdateFeedbackMessage) => {
-  const url = 'https://api.jugalbandi.ai/response-feedback';
-  const response = await Api.post(url, {
-    uuid_number: localStorage.getItem('uuid'),
-    query: queryAnswer.query,
-    response: queryAnswer.response,
-    feedback,
-  });
-  onUpdateFeedbackMessage(response);
-};
 const LikeDislikeButton = ({
   isLiked, isDisliked, onLiked, onDisLiked,
 }) => (
@@ -28,6 +18,7 @@ const LikeDislikeButton = ({
 );
 const FeedbackButtons = () => {
   const { queryAnswer } = useContext(CustomContext);
+  const uuid = localStorage.getItem('uuid');
   const [isLiked, setIsLiked] = useState(false);
   const [isDisliked, setIsDisliked] = useState(true);
   const [message, setMessage] = useState('');
@@ -38,12 +29,16 @@ const FeedbackButtons = () => {
   };
   const onLiked = async () => {
     setIsLiked(!isLiked);
-    if (!isLiked) { sendFeedbackResponse(!isLiked, queryAnswer, onUpdateFeedbackMessage); }
+    if (!isLiked) {
+      const feedbackStatus = await Chatbot.sendFeedback(!isLiked, queryAnswer, uuid);
+      onUpdateFeedbackMessage(feedbackStatus);
+    }
   };
-  const onDisLiked = () => {
+  const onDisLiked = async () => {
     setIsDisliked(!isDisliked);
     if (isDisliked) {
-      sendFeedbackResponse(!isDisliked, queryAnswer, onUpdateFeedbackMessage);
+      const feedbackStatus = await Chatbot.sendFeedback(!isDisliked, queryAnswer, uuid);
+      onUpdateFeedbackMessage(feedbackStatus);
     }
   };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { CustomContextProvider } from './CustomContext';
-import Jugalbandi from './Jugalbandi';
+import { CustomContextProvider } from './utlities/CustomContext';
+import Jugalbandi from './screens/Jugalbandi';
 
 const App = () => (
   <CustomContextProvider>
