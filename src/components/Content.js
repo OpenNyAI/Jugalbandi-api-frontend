@@ -1,19 +1,19 @@
 import React from 'react';
 
-const Content = ({ contentList, highlightedPortions }) => {
+const Content = ({ content, highlightedPortions }) => {
   const highlightedArray = [];
   const sortedArr = highlightedPortions.sort(
-    (a, b) => contentList.indexOf(a) - contentList.indexOf(b),
+    (a, b) => content.indexOf(a) - content.indexOf(b),
   );
-  const startingRange = contentList.indexOf(sortedArr[0]);
-  const endingRange = contentList.indexOf(sortedArr[sortedArr.length - 1])
+  const startingRange = content.indexOf(sortedArr[0]);
+  const endingRange = content.indexOf(sortedArr[sortedArr.length - 1])
   + sortedArr[sortedArr.length - 1].length;
   sortedArr.forEach((highlightedPortion) => {
     const highlights = highlightedPortion.replaceAll('\\n \\n', '\n \n').split('\n \n').filter((str) => str !== ' ' && str !== '  ');
     highlights.forEach((highlight) => highlightedArray.push(highlight.trim().replaceAll('\\n', '')));
   });
   const highlightsArray = highlightedArray.filter((trimmedSegment) => trimmedSegment !== '');
-  const segments = contentList?.replaceAll('\\n \\n', '\n \n').split('\n \n').filter((str) => str !== ' ' && str !== '  ');
+  const segments = content?.replaceAll('\\n \\n', '\n \n').split('\n \n').filter((str) => str !== ' ' && str !== '  ');
   const trimmedSegments = [];
   segments.forEach((segment) => {
     trimmedSegments.push(segment.trim().replaceAll('\\n', ''));
@@ -25,8 +25,8 @@ const Content = ({ contentList, highlightedPortions }) => {
     let startingHighlightRange = false;
     const positions = [];
     highlightsArray.forEach((highlight) => {
-      if ((contentList.indexOf(segment) + segment.indexOf(highlight) >= startingRange
-      && contentList.indexOf(segment) + segment.indexOf(highlight) <= endingRange)) {
+      if ((content.indexOf(segment) + segment.indexOf(highlight) >= startingRange
+      && content.indexOf(segment) + segment.indexOf(highlight) <= endingRange)) {
         if (segment.includes(highlight)) {
           highlighted = segment.includes(highlight);
           const startingIndex = segment.indexOf(highlight);
@@ -36,7 +36,7 @@ const Content = ({ contentList, highlightedPortions }) => {
             highlight,
             segment,
             length: segment.length,
-            posStart: contentList.indexOf(segment),
+            posStart: content.indexOf(segment),
             startingRange,
             endingRange,
           };
@@ -52,7 +52,7 @@ const Content = ({ contentList, highlightedPortions }) => {
           highlight,
           segment,
           length: segment.length,
-          posStart: contentList.indexOf(segment),
+          posStart: content.indexOf(segment),
           startingRange,
           endingRange,
         };

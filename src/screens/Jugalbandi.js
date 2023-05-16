@@ -1,25 +1,25 @@
 import React, {
   useContext, useEffect, useState,
 } from 'react';
-import './components/Header.css';
+import '../components/Header.css';
 import Chatbot from 'react-chatbot-kit';
 import {
   Col, Row,
   Layout,
 } from 'antd';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import './App.css';
-import config from './components/config';
-import MessageParser from './components/MessageParser';
-import ActionProvider from './components/ActionProvider';
-import { CustomContext } from './CustomContext';
-import CardPdfList from './components/CardPdfList';
-import Loader from './components/Loader';
-import Api from './API/Api';
-import uuidDatabase from './UuidDatabase';
-import UuidInput from './components/UuidInput';
-import SelectBox from './components/UuidSelect';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import '../App.css';
+import config from '../utlities/config';
+import MessageParser from '../utlities/MessageParser';
+import ActionProvider from '../utlities/ActionProvider';
+import { CustomContext } from '../utlities/CustomContext';
+import DocumentTabs from '../components/DocumentTabs';
+import Loader from '../components/Loader';
+import Api from '../api/Api';
+import uuidDatabase from '../UuidDatabase';
+import UuidInput from '../components/UuidInput';
+import SelectBox from '../components/UuidSelect';
 
 const { Content } = Layout;
 const Jugalbandi = () => {
@@ -125,7 +125,7 @@ const Jugalbandi = () => {
               {loading ? (
                 <Loader />
               )
-                : <CardPdfList cardPdfList={data} pdfContent={extractedText} />}
+                : <DocumentTabs docList={data} docContent={extractedText} />}
             </div>
           </Col>
         </Row>

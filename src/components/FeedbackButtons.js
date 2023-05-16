@@ -3,7 +3,7 @@ import {
 } from '@ant-design/icons';
 import { Button } from 'antd';
 import React, { useContext, useState } from 'react';
-import { CustomContext } from '../CustomContext';
+import { CustomContext } from '../utlities/CustomContext';
 import Chatbot from '../utlities/Chatbot';
 
 const LikeDislikeButton = ({

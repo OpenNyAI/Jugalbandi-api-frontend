@@ -1,7 +1,7 @@
 import { createChatBotMessage } from 'react-chatbot-kit';
 import React from 'react';
-import FeedbackButtons from './Widget';
-import BotAvatar from './BotAvatar';
+import FeedbackButtons from '../components/FeedbackButtons';
+import BotAvatar from '../components/BotAvatar';
 
 const config = {
   botName: 'Jugalbandi',

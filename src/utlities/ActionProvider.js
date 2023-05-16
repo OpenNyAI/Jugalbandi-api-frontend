@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useContext } from 'react';
-import { CustomContext } from '../CustomContext';
-import Chatbot from '../utlities/Chatbot';
+import { CustomContext } from './CustomContext';
+import Chatbot from './Chatbot';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const { updateData, onLoading, updateQueryAnswer } = useContext(CustomContext);
