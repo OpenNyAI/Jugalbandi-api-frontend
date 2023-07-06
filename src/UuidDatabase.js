@@ -15,5 +15,9 @@ const uuidDatabase = [
     value: '2ea8058c-f3be-11ed-866b-3e85235234ac',
     label: 'The Karnataka Agricultural Pests And Diseases Act, 1968 (2ea8058c-f3be-11ed-866b-3e85235234ac)',
   },
+  {
+    value: '5ba9c080-1bb8-11ee-aada-65a812796123',
+    label: 'The Digital Personal Data Protection Bill, 2022 (5ba9c080-1bb8-11ee-aada-65a812796123)',
+  },
 ];
 export default uuidDatabase;
