@@ -1,4 +1,4 @@
-import Api from '../api/Api';
+import Api from '../API/Api';
 
 /* eslint-disable camelcase */
 const getChatbotResponse = async (uuid_number, query_string) => {

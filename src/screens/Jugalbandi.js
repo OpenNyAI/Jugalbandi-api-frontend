@@ -16,7 +16,7 @@ import ActionProvider from '../utlities/ActionProvider';
 import { CustomContext } from '../utlities/CustomContext';
 import DocumentTabs from '../components/DocumentTabs';
 import Loader from '../components/Loader';
-import Api from '../api/Api';
+import Api from '../API/Api';
 import uuidDatabase from '../UuidDatabase';
 import UuidInput from '../components/UuidInput';
 import SelectBox from '../components/UuidSelect';
