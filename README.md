@@ -119,7 +119,9 @@ yarn.lock
 
   <img src="/public/2.png"/>
 
-<img src="/public/3.png"/>
+- The option for selecting a pre-existing UUID number, has been selected. So a dropdown has appeared, containing the pre-existing UUID numbers of the documents, that are already uploaded to the database.
+
+  <img src="/public/3.png"/>
 
 <img src="/public/4.png"/>
 
