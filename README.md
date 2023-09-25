@@ -114,6 +114,12 @@ yarn.lock
 
 <img src="/public/3.png"/>
 
+<img src="/public/4.png"/>
+
+<img src="/public/5.png"/>
+
+<img src="/public/6.png"/>
+
 # 🚀 4. Deployment
 
 This repository comes with a Dockerfile which is present in the root of the project directory. You can use this dockerfile to deploy your version of this application to Cloud Run.
