@@ -115,7 +115,9 @@ yarn.lock
 
     <img src="/public/1.png"/>
 
-<img src="/public/2.png"/>
+- The option for giving new UUID number has been selected. So an input box has appeared to input the new UUID number.
+
+  <img src="/public/2.png"/>
 
 <img src="/public/3.png"/>
 
