@@ -108,6 +108,11 @@ yarn.lock
 ```
 - All the source code is within `/src` folder.
 
+- In the UI:
+  - In the left corner, in the dropdown, you can select whether to give a new UUID number or to choose from a list of pre-existing UUID numbers.
+  -  the chatbox presents user and bot conversation.
+  - in the box on the right hand side, the document is shown along with the highlighted portion from where the bot has taken the response, for a particular question.
+
 <img src="/public/1.png"/>
 
 <img src="/public/2.png"/>
