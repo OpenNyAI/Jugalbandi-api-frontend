@@ -123,7 +123,9 @@ yarn.lock
 
   <img src="/public/3.png"/>
 
-<img src="/public/4.png"/>
+- One of the pre-existing UUID numbers is selected and then a question, regarding the document of that particular UUID, is typed in the chatbox from the user side, and after the question submission, the bot takes some time to find the response.
+
+  <img src="/public/4.png"/>
 
 <img src="/public/5.png"/>
 
