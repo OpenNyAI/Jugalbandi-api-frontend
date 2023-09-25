@@ -131,7 +131,9 @@ yarn.lock
 
   <img src="/public/5.png"/>
 
-<img src="/public/6.png"/>
+- In the right hand side, in the document, its portion, from where the bot took reference while generating the response, is also highlighted.
+
+  <img src="/public/6.png"/>
 
 # 🚀 4. Deployment
 
