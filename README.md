@@ -107,6 +107,13 @@ src
 yarn.lock
 ```
 - All the source code is within `/src` folder.
+
+<img src="/public/1.png"/>
+
+<img src="/public/2.png"/>
+
+<img src="/public/3.png"/>
+
 # 🚀 4. Deployment
 
 This repository comes with a Dockerfile which is present in the root of the project directory. You can use this dockerfile to deploy your version of this application to Cloud Run.
