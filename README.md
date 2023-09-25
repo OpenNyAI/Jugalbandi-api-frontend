@@ -127,7 +127,9 @@ yarn.lock
 
   <img src="/public/4.png"/>
 
-<img src="/public/5.png"/>
+- The bot presents the response and also the related document is shown in the right hand side.
+
+  <img src="/public/5.png"/>
 
 <img src="/public/6.png"/>
 
