@@ -1,70 +1,185 @@
-# Getting Started with Create React App
+# JUGALBANDI API FRONTEND : Frontend for Generic Q&A of Jugalbandi APIs
+
+[Jugalbandi API Frontend](https://jugalbandi-api-frontend-fer6v2lowq-uc.a.run.app/) is the frontend service for the Generic Q&A APIs of the Jugalbandi set of APIs. 
+
+The tech stack mainly includes React with Javascript and also [Ant Design](https://ant.design/components/overview/) as the UI library.
+
+# 🔧 1. Installation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+To use the code, you need to follow these steps:
 
-In the project directory, you can run:
+1. Clone the repository from GitHub:
 
-### `npm start`
+   ```bash
+   git clone git@github.com:OpenNyAI/Jugalbandi-api-frontend.git
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. The code requires **Node 18 or higher** and the project follows Yarn package system. Go through the official [Node](https://nodejs.org/en/docs) documentation to install Node and Yarn in your respective systems.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Once Node is installed, go into the folder and run the following command to install the dependencies:
 
-### `npm test`
+   ```bash
+   yarn install
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This command will install all the dependencies, that are mentioned in **package.json** and create a **node_modules** folder at the root of your project directory.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 🏃🏻 2. Running
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once the above installation steps are completed, run the following command in the root folder of the repository in terminal, to start the application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+yarn start
+```
 
-### `npm run eject`
+*yarn start* runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# 📃 3. Specification and Documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Folder Structure
 
-## Learn More
+```
+.eslintrc.json
+.gitignore
+.storybook
+   |-- main.js
+   |-- preview.js
+Dockerfile
+README.md
+nginx
+   |-- nginx.conf
+package.json
+public
+   |-- bot-avatar.png
+   |-- favicon.ico
+   |-- index.html
+   |-- logo192.png
+   |-- logo512.png
+   |-- manifest.json
+   |-- robots.txt
+src
+   |-- API
+   |   |-- Api.js
+   |-- App.css
+   |-- App.js
+   |-- App.test.js
+   |-- UuidDatabase.js
+   |-- components
+   |   |-- BotAvatar.js
+   |   |-- Content.js
+   |   |-- DocumentTabs.js
+   |   |-- DocumentTabs.stories.js
+   |   |-- FeedbackButtons.js
+   |   |-- Footer.css
+   |   |-- Footer.js
+   |   |-- Footer.stories.js
+   |   |-- Header.css
+   |   |-- Header.js
+   |   |-- Header.stories.js
+   |   |-- Loader.css
+   |   |-- Loader.js
+   |   |-- Loader.stories.js
+   |   |-- UuidInput.js
+   |   |-- UuidInput.stories.js
+   |   |-- UuidSelect.js
+   |   |-- UuidSelect.stories.js
+   |-- index.css
+   |-- index.js
+   |-- reportWebVitals.js
+   |-- sample-result.js
+   |-- screens
+   |   |-- Jugalbandi.js
+   |-- setupTests.js
+   |-- utlities
+   |   |-- ActionProvider.js
+   |   |-- Chatbot.js
+   |   |-- CustomContext.js
+   |   |-- MessageParser.js
+   |   |-- config.js
+yarn.lock
+```
+- All the source code is within `/src` folder.
+# 🚀 4. Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This repository comes with a Dockerfile which is present in the root of the project directory. You can use this dockerfile to deploy your version of this application to Cloud Run.
+Make the necessary changes to your dockerfile with respect to your new changes. (Note: The given Dockerfile will deploy the base code without any error, provided you added the required environment variables (mentioned in the .env file if any) to either the Dockerfile or the cloud run revision).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can run the following command to to build the application:
 
-### Code Splitting
+```bash
+yarn build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+_`yarn build` builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes. See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information._
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# 📜🖋 5. Yarn commands
 
-### Making a Progressive Web App
+- All the yarn commands like install, start, build, test, etc. are specified inside a file called **package.json**. You can check out and customize the commands in this file.
+- Adding package through yarn:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - To add a new npm package to the project, run the following command:
 
-### Advanced Configuration
+    ```bash
+    yarn add <package-name>
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  - To add a custom package to the project, run the following command:
 
-### Deployment
+    ```bash
+    yarn add <path_to_custom_package>
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Removing package through yarn:
 
-### `npm run build` fails to minify
+  - To remove a npm package from the project, run the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    ```bash
+    yarn remove <package-name>
+    ```
+
+- Running tests through yarn:
+
+  - To run all the tests, run the following command:
+
+    ```bash
+    yarn test
+    ```
+
+  - To run a specific test, run the following command:
+
+    ```bash
+    yarn test <path_to_test_file>
+    ```
+
+- Ejecting through yarn:
+
+  - To eject, run the following command:
+
+    ```bash
+    yarn eject
+    ```
+
+    **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+    If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+    Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+    You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.   
+
+# 👩‍💻 6. Usage
+
+To directly use the Jugalbandi API Frontend without cloning the repo, you can follow below steps to get you started:
+
+1.  Visit [https://jugalbandi-api-frontend-fer6v2lowq-uc.a.run.app/](https://jugalbandi-api-frontend-fer6v2lowq-uc.a.run.app/).
+2.  Now you can go through the application and select any particular document from the dropdown or give a new UUID for a newly uploaded document. You can also generate response for any question regarding a particular document (UUID).
